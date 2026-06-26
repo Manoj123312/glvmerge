@@ -1,0 +1,110 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f3f3f3;
+  color: #1f1f1f;
+  font-family: 'Times New Roman', serif;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 2rem;
+}
+
+.page-title {
+  margin: 0.5rem 0 1.5rem;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.forms-grid,
+.data-section {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card,
+.table-card {
+  background: #f8f8f8;
+  border: 1px solid #d7d7d7;
+  padding: 1.4rem;
+}
+
+.card h2 {
+  font-size: 2.6rem;
+  margin: 0 0 1rem;
+}
+
+.form-block {
+  display: grid;
+  gap: 0.65rem;
+}
+
+label {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-top: 0.35rem;
+}
+
+input,
+button {
+  width: 100%;
+  border: 1px solid #808080;
+  padding: 0.45rem;
+  font-size: 1.15rem;
+  font-family: inherit;
+}
+
+button {
+  width: max-content;
+  padding-inline: 1.2rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+.status {
+  color: #116600;
+}
+
+.table-card h3 {
+  margin: 0 0 0.8rem;
+  font-size: 1.8rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #a7a7a7;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+th {
+  background: #ececec;
+}
+
+.empty {
+  margin: 0;
+  color: #555;
+}
+
+@media (max-width: 900px) {
+  .forms-grid,
+  .data-section {
+    grid-template-columns: 1fr;
+  }
+
+  .card h2 {
+    font-size: 2rem;
+  }
+
+  label {
+    font-size: 1.2rem;
+  }
+}

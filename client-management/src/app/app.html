@@ -1,0 +1,162 @@
+<main class="page">
+  <h1 class="page-title">Reference Outputs</h1>
+
+  <section class="forms-grid">
+    <article class="card">
+      <h2>Create a Client</h2>
+      <p>Please fill in this form to create a client.</p>
+
+      <form (ngSubmit)="registerClient()" #clientNgForm="ngForm" class="form-block">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="Enter Name"
+          [(ngModel)]="clientForm.name"
+          required
+        />
+
+        <label for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Enter Email"
+          [(ngModel)]="clientForm.email"
+          required
+        />
+
+        <label for="address">Address</label>
+        <input
+          id="address"
+          name="address"
+          type="text"
+          placeholder="Enter Address"
+          [(ngModel)]="clientForm.address"
+          required
+        />
+
+        <label for="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Enter Password"
+          [(ngModel)]="clientForm.password"
+          required
+          minlength="6"
+        />
+
+        <label for="repeatPassword">Repeat Password</label>
+        <input
+          id="repeatPassword"
+          name="repeatPassword"
+          type="password"
+          placeholder="Repeat Password"
+          [(ngModel)]="clientForm.repeatPassword"
+          required
+          minlength="6"
+        />
+
+        <button type="submit" [disabled]="clientNgForm.invalid">Register</button>
+        <small *ngIf="clientMessage" class="status">{{ clientMessage }}</small>
+      </form>
+    </article>
+
+    <article class="card">
+      <h2>Create a Meeting Schedule</h2>
+
+      <form (ngSubmit)="scheduleMeeting()" #meetingNgForm="ngForm" class="form-block">
+        <label for="topic">Meeting Topic</label>
+        <input
+          id="topic"
+          name="topic"
+          type="text"
+          placeholder="Enter Meeting Topic"
+          [(ngModel)]="meetingForm.topic"
+          required
+        />
+
+        <label for="people">Number of People</label>
+        <input
+          id="people"
+          name="people"
+          type="number"
+          min="1"
+          placeholder="Enter number of people"
+          [(ngModel)]="meetingForm.numberOfPeople"
+          required
+        />
+
+        <label for="startTime">Start Time</label>
+        <input
+          id="startTime"
+          name="startTime"
+          type="datetime-local"
+          [(ngModel)]="meetingForm.startTime"
+          required
+        />
+
+        <label for="clientEmail">Client Email</label>
+        <input
+          id="clientEmail"
+          name="clientEmail"
+          type="email"
+          placeholder="Enter Client Email"
+          [(ngModel)]="meetingForm.clientEmail"
+          required
+        />
+
+        <button type="submit" [disabled]="meetingNgForm.invalid">Schedule</button>
+        <small *ngIf="meetingMessage" class="status">{{ meetingMessage }}</small>
+      </form>
+    </article>
+  </section>
+
+  <section class="data-section">
+    <article class="table-card">
+      <h3>Registered Clients</h3>
+      <table *ngIf="clients.length; else noClients">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let client of clients">
+            <td>{{ client.name }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.address }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #noClients><p class="empty">No clients added yet.</p></ng-template>
+    </article>
+
+    <article class="table-card">
+      <h3>Meeting Schedule</h3>
+      <table *ngIf="meetings.length; else noMeetings">
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>People</th>
+            <th>Start Time</th>
+            <th>Client Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let meeting of meetings">
+            <td>{{ meeting.topic }}</td>
+            <td>{{ meeting.numberOfPeople }}</td>
+            <td>{{ meeting.startTime | date: 'medium' }}</td>
+            <td>{{ meeting.clientEmail }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #noMeetings><p class="empty">No meetings scheduled yet.</p></ng-template>
+    </article>
+  </section>
+</main>
